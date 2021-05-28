@@ -59,8 +59,32 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 const displayMovements = function(movements) {
   movements.forEach(function(mov, i) {
+    const type = mov > 0 ? 'deposit' : 'withdrawal'
+
+    const html = `
+    <div class="movements__row">
+          <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
+          <div class="movements__value">${mov}</div>
+        </div>
+    `
+    containerMovements.insertAdjacentHTML('afterbegin', html)
 
   })
 }
 
 displayMovements(account1.movements)
+
+const createUsername = function(accs) {
+  accs.forEach(function(acc) {
+    acc.username = acc.owner
+    .toLowerCase()
+    .split(' ')
+    .map(name => name[0])
+    .join('')
+  })
+}
+
+const user = 'Steven Thomas Williams'
+
+createUsername(accounts)
+console.log(accounts)

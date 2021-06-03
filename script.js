@@ -74,6 +74,13 @@ const displayMovements = function(movements) {
 
 displayMovements(account1.movements)
 
+const calcDisplayBalance = function(movements){
+  const balance = movements.reduce((acc, mov) => acc + mov, 0)
+  labelBalance.textContent = `${balance} EUR`
+}
+
+calcDisplayBalance(account1.movements)
+
 const createUsername = function(accs) {
   accs.forEach(function(acc) {
     acc.username = acc.owner
@@ -87,4 +94,5 @@ const createUsername = function(accs) {
 const user = 'Steven Thomas Williams'
 
 createUsername(accounts)
-console.log(accounts)
+
+
